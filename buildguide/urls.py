@@ -21,5 +21,5 @@ from django.conf.urls.static import static  # Importa static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('posts/', include('posts.urls')),  # Asume que tienes un archivo urls.py en tu app posts
+    path('posts/', include('applications.posts.urls')),  # Asume que tienes un archivo urls.py en tu app posts
 ]
