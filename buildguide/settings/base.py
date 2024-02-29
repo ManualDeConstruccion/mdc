@@ -29,6 +29,7 @@ DJANGO_APPS = [
 LOCAL_APPS = [
 
     'applications.posts',
+    'applications.sitecomponents',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS
