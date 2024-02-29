@@ -1,7 +1,9 @@
 from django.db import models
+from applications.sitecomponents.models import App
 
 class Section(models.Model):
     name = models.CharField(max_length=140, unique=True, null=False, blank=False)
+    app = models.ForeignKey(App, on_delete=models.CASCADE, related_name='sections', null=True)
 
     def __str__(self):
         return self.name
