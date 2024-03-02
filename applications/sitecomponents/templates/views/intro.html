@@ -1,11 +1,9 @@
 {% extends 'components/layouts/applayout.html' %}
 {% block content %}
-    <h2>{{ section.name }}</h2>
-    {% for subsection in subsections %}  <!-- Corregido el bucle for -->
-    <div>
-        <h3>{{ subsection.name }}</h3>
+    <h2>Introducción</h2>
+        <div>
+        <h3>Introducción</h3>
         <!-- Más detalles del artículo -->
     </div>
-    {% endfor %}
 {% endblock %}
 {% include 'components/layouts/footer.html' %}

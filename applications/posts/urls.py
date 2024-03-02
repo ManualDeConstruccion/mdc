@@ -4,5 +4,5 @@ from . import views
 app_name = 'posts_app'
 
 urlpatterns = [
-    path('', views.posts, name='posts'),
+    path('/<str:section_name>/', views.posts, name='posts'),
 ]
