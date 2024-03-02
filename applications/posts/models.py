@@ -1,7 +1,10 @@
 from django.db import models
+from applications.sitecomponents.models import App
 
 class Section(models.Model):
     name = models.CharField(max_length=140, unique=True, null=False, blank=False)
+    app = models.ForeignKey(App, on_delete=models.CASCADE, related_name='sections', null=True)
+    orden = models.IntegerField(default=0, null=False, blank=False)
 
     def __str__(self):
         return self.name
@@ -9,6 +12,7 @@ class Section(models.Model):
 class Subsection(models.Model):
     name = models.CharField(max_length=140, unique=True, null=False, blank=False)
     section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='subsections')
+    orden = models.IntegerField(default=0, null=False, blank=False)
 
     def __str__(self):
         return self.name
@@ -16,6 +20,7 @@ class Subsection(models.Model):
 class Title(models.Model):
     name = models.CharField(max_length=200, unique=True, null=False, blank=False)
     subsection = models.ForeignKey(Subsection, on_delete=models.CASCADE, related_name='titles')
+    orden = models.IntegerField(default=0, null=False, blank=False)
 
     def __str__(self):
         return self.name

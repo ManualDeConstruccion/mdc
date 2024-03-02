@@ -2,9 +2,9 @@
 <div id="faq" class="relative py-12 md:py-16 bg-gray-100 dark:bg-gray-900 dark:bg-opacity-40">
     <div class="container xl:max-w-4xl mx-auto px-4">
       <header class="text-center mx-auto mb-16">
-        <h2 class="text-2xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-300"><span class="font-light">Our</span> FAQ</h2>
+        <h2 class="text-2xl leading-normal mb-2 font-bold text-gray-800 dark:text-gray-300"><span class="font-light">Sobre</span> Nosotros</h2>
         <hr class="block w-12 h-0.5 mx-auto my-5 bg-indigo-500 border-indigo-500">
-        <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">Most frequently asked questions</p>
+        <p class="text-gray-500 leading-relaxed font-light text-xl mx-auto pb-2">Preguntas y respuestas sobre lo que hacemos</p>
       </header>
 
       <div id="Accordione" x-data="{selected:0}">
@@ -13,7 +13,7 @@
           <div class="border-b border-gray-200 mb-0 bg-indigo-300/20 dark:bg-indigo-900 dark:bg-opacity-20 dark:border-gray-800 py-2 px-4" id="HeadingOnee">
             <div class="d-grid mb-0">
               <button class="py-3 px-0 w-full rounded leading-5 font-medium flex justify-between focus:outline-none focus:ring-0"  @click="selected !== 0 ? selected = 0 : selected = null">
-                What is the difference between a single and multiple license?
+                ¿Para qué sirve esta plataforma?
                 <span>
                   <svg class="transform transition duration-500" :class="{ '-rotate-180': selected == 0 }" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"></path>
@@ -24,7 +24,9 @@
           </div>
           <div id="CollapseOnee" x-show="selected == 0">
             <div class="flex-1 p-6">
-              <p>A single license allows you to use Taildash on a 2 project, while a multiple license allows you to use it on multiple projects..</p>
+              <p>La plataforma Manual de Construcción tiene el principal objetivo de entregar el conocimiento necesario para que puedan administrar la construcción de su vivienda con los menores errores posibles.
+               Entregando un manual detallado de los pasos que involucra construir, además de información relevante cómo precios, proveedores y otros datos relevantes de la industria.
+              </p>
             </div>
           </div>
         </div>
@@ -34,7 +36,7 @@
           <div class="border-b border-gray-200 mb-0 bg-indigo-300/20 dark:bg-indigo-900 dark:bg-opacity-20 dark:border-gray-800 py-2 px-4" id="HeadingTwoe">
             <div class="d-grid mb-0">
               <button class="py-3 px-0 w-full rounded leading-5 font-medium flex justify-between focus:outline-none focus:ring-0" @click="selected !== 1 ? selected = 1 : selected = null">
-                Can I use Taildash for freelance and web design services?
+                ¿A quién va dirigida la plataforma Manual de Construcción?
                 <span>
                   <svg class="transform transition duration-500" :class="{ '-rotate-180': selected == 1 }" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"></path>
@@ -45,7 +47,8 @@
           </div>
           <div id="CollapseTwoe" x-show="selected == 1">
             <div class="flex-1 p-6">
-              <p>Yes, you can use Taildash for freelance and web design services. In fact, it is a great tool for creating professional-looking dashboards for your clients.</p>
+              <p>La plataforma Manual de Construcción está dirigida a todas las personas con ganas de diseñar y construir por su cuenta. Ya sea que no tenga
+                ningún tipo de conocimiento, o sea profesional del área. </p>
             </div>
           </div>
         </div>
@@ -55,7 +58,7 @@
           <div class="border-b border-gray-200 mb-0 bg-indigo-300/20 dark:bg-indigo-900 dark:bg-opacity-20 dark:border-gray-800 py-2 px-4" id="HeadingThreee">
             <div class="d-grid mb-0">
               <button class="py-3 px-0 w-full rounded leading-5 font-medium flex justify-between focus:outline-none focus:ring-0" @click="selected !== 2 ? selected = 2 : selected = null">
-                Will I get future updates?
+                ¿Esto quiere decir que me puedo ahorrar el arquitecto o constructor?
                 <span>
                   <svg class="transform transition duration-500" :class="{ '-rotate-180': selected == 2 }" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"></path>
@@ -66,7 +69,9 @@
           </div>
           <div id="CollapseThreee" x-show="selected == 2">
             <div class="flex-1 p-6">
-              <p>Yes, you will get future updates for Taildash. We are constantly adding new features and improvements, and you will always have access to the latest version.</p>
+              <p>No. El objetivo de la plataforma es entregarte el conocimiento necesario para ahorrarte problemas futuros. Esto, en muchos casos pasa justamente
+                por poner en valor el trabajo de especialistas y recomendar su uso.
+              </p>
             </div>
           </div>
         </div>
@@ -76,7 +81,7 @@
           <div class="border-b border-gray-200 mb-0 bg-indigo-300/20 dark:bg-indigo-900 dark:bg-opacity-20 dark:border-gray-800 py-2 px-4" id="HeadingFoure">
             <div class="d-grid mb-0">
               <button class="py-3 px-0 w-full rounded leading-5 font-medium flex justify-between focus:outline-none focus:ring-0" @click="selected !== 3 ? selected = 3 : selected = null">
-                Can I get support if I have any difficulties?
+                ¿Hacen asesorías personalizadas si tengo alguna consulta extra?
                 <span>
                   <svg class="transform transition duration-500" :class="{ '-rotate-180': selected == 3 }" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"></path>
@@ -87,7 +92,9 @@
           </div>
           <div id="CollapseFoure" x-show="selected == 3">
             <div class="flex-1 p-6">
-              <p>Yes, you can get support if you have any difficulties using Taildash. We offer a comprehensive support system, including documentation and email support.</p>
+              <p>Si, hacemos asesorías personalizadas. Estas pueden ser online o presenciales. El costo de ellas dependerá del tiempo y ubicación (en el caso de las presenciales)
+                Para más información escribir en la casilla de contacto con los detalles de la solicitud.
+              </p>
             </div>
           </div>
         </div>
@@ -97,7 +104,7 @@
           <div class="border-b border-gray-200 mb-0 bg-indigo-300/20 dark:bg-indigo-900 dark:bg-opacity-20 dark:border-gray-800 py-2 px-4" id="HeadingFoure">
             <div class="d-grid mb-0">
               <button class="py-3 px-0 w-full rounded leading-5 font-medium flex justify-between focus:outline-none focus:ring-0" @click="selected !== 4 ? selected = 4 : selected = null">
-                Can I create products/themes to resell with Taildash?
+                ¿Quienes somos?
                 <span>
                   <svg class="transform transition duration-500" :class="{ '-rotate-180': selected == 4 }" width="1rem" height="1rem" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 01.708 0L8 10.293l5.646-5.647a.5.5 0 01.708.708l-6 6a.5.5 0 01-.708 0l-6-6a.5.5 0 010-.708z" clip-rule="evenodd"></path>
@@ -108,7 +115,9 @@
           </div>
           <div id="CollapseFive" x-show="selected == 4">
             <div class="flex-1 p-6">
-              <p>No, you cannot create products/themes to resell with Taildash. The license does not allow for redistribution or resale of the product.</p>
+              <p>Somos un equipo de arquitectos y constructores que sueñan con poner la tecnología al servicio de nuestro rubro. Para construir herramientas que ayuden
+                 tanto a profesionales cómo a la gente en general.
+              </p>
             </div>
           </div>
         </div>
