@@ -1,11 +1,94 @@
 {% extends 'components/layouts/applayout.html' %}
 {% block content %}
-    <h2>{{ section.name }}</h2>
-    {% for subsection in subsections %}  <!-- Corregido el bucle for -->
-    <div>
-        <h3>{{ subsection.name }}</h3>
-        <!-- Más detalles del artículo -->
-    </div>
-    {% endfor %}
+    <main class="pt-20 -mt-2">
+        <div class="mx-auto py-2 sm:px-2">
+          <!-- row -->
+          <div class="flex flex-wrap flex-row">
+            <div class="flex-shrink max-w-full px-4 w-full">   
+              <h1 class="text-xl font-bold mt-3 mb-5">{{ section.name }}</h1>
+            </div>         
+            
+            <!-- =================================MAIN CONTENT========================-->
+            <div class="flex-shrink max-w-full px-4 w-full md:w-2/3 mb-6">
+              <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-6">
+                <div class="relative">
+                  <ul>
+                      {% for subsection in subsections %}
+                      <li>
+                          <h2 class="font-bold">{{ forloop.counter }}. {{ subsection.name }}</h2>
+                          <ul class="">
+                              {% for article in subsection.articles.all %}
+                              <li>
+                                  <h3 class="font-bold">{{ forloop.parentloop.counter }}.{{ forloop.counter }} {{ article.name }}</h3>
+                                  <div>
+                                    <h4>Descripción</h4>
+                                    {{ article.description }}
+                                  </div>
+                                  <div>
+                                    <h6>Referencia</h6>
+                                    {{ article.reference }}
+                                  </div>
+                                  <ul class="">
+                                      {% for element in article.elements.all %}
+                                      <li>
+                                          <h4 class="font-bold">{{ forloop.parentloop.parentloop.counter }}.{{ forloop.parentloop.counter }}.{{ forloop.counter }} {{ element.name }}</h4>
+                                          <div>
+                                            <h4>Descripción</h4>
+                                            {{ element.description }}
+                                          </div>
+                                          <div>
+                                            <h4>Descripción</h4>
+                                            {{ element.reference }}
+                                          </div>
+                                      </li>
+                                      {% endfor %}
+                                  </ul>
+                              </li>
+                              {% endfor %}
+                          </ul>
+                      </li>
+                      {% endfor %}
+                  </ul>
+               </div>
+
+              </div>
+            </div>
+            <!-- =================================END MAIN CONTENT========================-->
+
+            <!-- ================================= LATERAL INDEX ========================-->
+            <div class="flex-shrink max-w-full px-4 w-full md:w-1/3 mb-6">
+              <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg mb-6">
+                <h4 class="font-semibold mb-4">Índice</h4>
+                <!-- inicio lista -->
+                <div class="relative">
+                  <ul>
+                      {% for subsection in subsections %}
+                      <li>
+                          <h2 class="font-bold">{{ forloop.counter }}. {{ subsection.name }}</h2>
+                          <ul class="pl-8 list-disc">
+                              {% for article in subsection.articles.all %}
+                              <li>
+                                  <h3 class="font-semibold">{{ forloop.parentloop.counter }}.{{ forloop.counter }} {{ article.name }}</h3>
+                                  <ul class="pl-8">
+                                      {% for element in article.elements.all %}
+                                      <li class="pl-8">
+                                          <h4>{{ forloop.parentloop.parentloop.counter }}.{{ forloop.parentloop.counter }}.{{ forloop.counter }} {{ element.name }}</h4>
+                                          <!-- Más detalles del elemento -->
+                                      </li>
+                                      {% endfor %}
+                                  </ul>
+                              </li>
+                              {% endfor %}
+                          </ul>
+                      </li>
+                      {% endfor %}
+                  </ul>
+               </div>
+              </div>
+            </div>
+            <!-- ================================= LATERAL INDEX ========================-->
+          </div>
+        </div>
+      </main>
 {% endblock %}
 {% include 'components/layouts/footer.html' %}
