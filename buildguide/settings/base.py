@@ -1,7 +1,6 @@
 from pathlib import Path
 import os
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -115,9 +114,9 @@ LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 
 # Adaptador de cuenta personalizado para django-allauth
-ACCOUNT_ADAPTER = 'users.adapters.MyAccountAdapter'
+ACCOUNT_ADAPTER = 'applications.users.adapters.MyAccountAdapter'
 
 # Formularios personalizados para django-allauth
 ACCOUNT_FORMS = {
-    'signup': 'users.forms.CustomSignupForm',
+    'signup': 'applications.users.forms.CustomSignupForm',
 }
