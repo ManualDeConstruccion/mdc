@@ -120,3 +120,10 @@ ACCOUNT_ADAPTER = 'applications.users.adapters.MyAccountAdapter'
 ACCOUNT_FORMS = {
     'signup': 'applications.users.forms.CustomSignupForm',
 }
+
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+

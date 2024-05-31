@@ -52,8 +52,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         super(User, self).save(*args, **kwargs)
 
     def decrypt_nombre_completo(self):
-        return cipher_suite.decrypt(
-            self.encrypted_nombre_completo.encode()).decode() if self.encrypted_nombre_completo else ''
+        return cipher_suite.decrypt(self.encrypted_nombre_completo.encode()).decode() if self.encrypted_nombre_completo else ''
 
     def __str__(self):
         return self.email
