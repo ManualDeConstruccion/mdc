@@ -1,12 +1,7 @@
-import uuid
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin
 from django.db import models
 from django.contrib.auth.models import BaseUserManager
-from cryptography.fernet import Fernet
-
-# Generar clave para encriptación (esto debería almacenarse de forma segura)
-key = Fernet.generate_key()
-cipher_suite = Fernet(key)
+import uuid
 
 
 class UserManager(BaseUserManager):
@@ -35,7 +30,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     identifier = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
     email = models.EmailField(unique=True)
-    encrypted_nombre_completo = models.CharField(max_length=256, blank=True)
+    nombre_completo = models.CharField(max_length=256, blank=True)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -45,14 +40,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     objects = UserManager()
-
-    def save(self, *args, **kwargs):
-        if self.nombre_completo:
-            self.encrypted_nombre_completo = cipher_suite.encrypt(self.nombre_completo.encode()).decode()
-        super(User, self).save(*args, **kwargs)
-
-    def decrypt_nombre_completo(self):
-        return cipher_suite.decrypt(self.encrypted_nombre_completo.encode()).decode() if self.encrypted_nombre_completo else ''
 
     def __str__(self):
         return self.email
