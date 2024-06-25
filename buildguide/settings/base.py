@@ -20,6 +20,7 @@ LOCAL_APPS = [
     'applications.posts',
     'applications.sitecomponents',
     'applications.users',
+    'applications.regioncomuna',
 ]
 
 THIRD_PARTY_APPS = [
