@@ -10,6 +10,7 @@ class Section(models.Model):
     def __str__(self):
         return self.name
 
+
 class Subsection(models.Model):
     name = models.CharField(max_length=140, unique=True, null=False, blank=False)
     section = models.ForeignKey(Section, on_delete=models.CASCADE, related_name='subsections')
@@ -17,6 +18,7 @@ class Subsection(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Article(models.Model):
     name = models.CharField(max_length=200, unique=True, null=False, blank=False)
@@ -39,7 +41,8 @@ class Article(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+
 class Element(models.Model):
     name = models.CharField(max_length=200, null=False, blank=False)
     description = models.TextField(max_length=3000, null=False, blank=False)
@@ -61,16 +64,19 @@ class Element(models.Model):
     def __str__(self):
         return self.name
 
+
 class Image(models.Model):
     image = models.ImageField(upload_to='images/')
     article = models.ForeignKey('Article', related_name='article_images', on_delete=models.CASCADE, null=True, blank=True)
     element = models.ForeignKey('Element', related_name='element_images', on_delete=models.CASCADE, null=True, blank=True)
+
 
 class File(models.Model):
     name = models.CharField(null=True, blank=False, max_length=200, verbose_name='Nombre (obligatorio)', unique=True)
     file = models.FileField(upload_to='files/')
     article = models.ForeignKey('Article', related_name='article_files', on_delete=models.CASCADE, null=True, blank=True)
     element = models.ForeignKey('Element', related_name='element_files', on_delete=models.CASCADE, null=True, blank=True)
+
 
 class Video(models.Model):
     url = models.URLField()
