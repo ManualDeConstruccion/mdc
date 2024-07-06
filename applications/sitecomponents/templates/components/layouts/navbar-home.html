@@ -166,7 +166,7 @@
       <div class="grid text-center lg:block my-4 lg:my-auto">
         {% if request.user.is_authenticated %}
           <span class="text-sm text-white">
-            {{ request.user.nombre_completo }}
+            {{ request.user.name }}
           </span>
             <a href="{% url 'account_logout' %}" class="py-2 px-4 text-sm inline-block text-center rounded leading-5 text-gray-100 bg-pink-500 border border-pink-500 hover:text-gray-300 hover:bg-pink-600 hover:ring-0 hover:border-pink-600 focus:bg-pink-600 focus:border-pink-600 focus:outline-none focus:ring-0">
               Cerrar sesión

@@ -21,6 +21,9 @@ LOCAL_APPS = [
     'applications.sitecomponents',
     'applications.users',
     'applications.regioncomuna',
+    'applications.propertys',
+    'applications.projects',
+    'applications.budgets',
 ]
 
 THIRD_PARTY_APPS = [
