@@ -1,8 +1,7 @@
-from pathlib import Path
-import os
+from unipath import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).ancestor(3)
 
 # Application definition
 
@@ -21,6 +20,9 @@ LOCAL_APPS = [
     'applications.sitecomponents',
     'applications.users',
     'applications.regioncomuna',
+    'applications.properties',
+    'applications.projects',
+    'applications.budgets',
 ]
 
 THIRD_PARTY_APPS = [
@@ -49,7 +51,7 @@ ROOT_URLCONF = 'buildguide.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR.child('templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,11 +95,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
