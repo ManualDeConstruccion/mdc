@@ -6,7 +6,7 @@ from model_utils.models import TimeStampedModel
 class Project(TimeStampedModel):
     name = models.CharField(max_length=200, verbose_name=_('Nombre'))
     description = models.CharField(max_length=1000, verbose_name=_('Descripción'))
-    property = models.ForeignKey('propertys.Property', on_delete=models.SET_NULL, null=True,  verbose_name=_('Propiedad'), related_name='projects')
+    property = models.ForeignKey('properties.Property', on_delete=models.SET_NULL, null=True,  verbose_name=_('Propiedad'), related_name='projects')
 
     is_active = models.BooleanField(default=True, verbose_name=_('Activo'))
 

@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-        ('propertys', '0001_initial'),
+        ('properties', '0001_initial'),
         ('users', '0004_crear_universidades'),
     ]
 
@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(max_length=200, verbose_name='Nombre')),
                 ('description', models.CharField(max_length=1000, verbose_name='Descripción')),
                 ('is_active', models.BooleanField(default=True, verbose_name='Activo')),
-                ('property', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='projects', to='propertys.property', verbose_name='Propiedad')),
+                ('property', models.ForeignKey(null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='projects', to='properties.property', verbose_name='Propiedad')),
             ],
             options={
                 'verbose_name': 'Proyecto',

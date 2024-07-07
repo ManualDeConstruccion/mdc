@@ -1,0 +1,12 @@
+{% extends 'components/layouts/applayout.html' %}
+{% block content %}
+  <h2>Create Budget</h2>
+  <form method="post">{% csrf_token %}
+    {{ form.as_p }}
+    {{ subprojects.management_form }}
+    {% for form in subprojects.forms %}
+      {{ form.as_p }}
+    {% endfor %}
+    <button type="submit">Save Budget</button>
+  </form>
+{% endblock %}

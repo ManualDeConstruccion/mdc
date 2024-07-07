@@ -26,12 +26,12 @@ DATABASES = {
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static",]
+STATICFILES_DIRS = [BASE_DIR.child('static')]
 
 # Media files
 # Defines the base URL and directory to serve user uploaded files during development
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = BASE_DIR.child('media')
 
 # Email Backend
 # Configure a local email backend if necessary, for development purposes
