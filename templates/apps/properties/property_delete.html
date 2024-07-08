@@ -1,0 +1,9 @@
+{% extends 'components/layouts/applayout.html' %}
+{% block content %}
+<h2>Delete Property</h2>
+<form method="post">
+    {% csrf_token %}
+    <p>Are you sure you want to delete "{{ property.name }}"?</p>
+    <button type="submit">Delete</button>
+</form>
+{% endblock %}
