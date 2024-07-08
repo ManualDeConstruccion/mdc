@@ -1,15 +1,14 @@
-# views.py
-
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .models import BudgetProject
 from .forms import BudgetProjectForm, BudgetSubProjectFormSet
 
 
-class BudgetProjectCreateView(CreateView):
+class BudgetProjectCreateView(LoginRequiredMixin, CreateView):
     model = BudgetProject
     form_class = BudgetProjectForm
-    template_name = 'apps/budget/create_budget.html'
+    template_name = 'apps/budgets/create_budget.html'
     success_url = reverse_lazy('view_budget')  # Asume que hay una URL con este nombre
 
     def get_context_data(self, **kwargs):
@@ -32,7 +31,7 @@ class BudgetProjectCreateView(CreateView):
             return self.render_to_response(self.get_context_data(form=form))
 
 
-class BudgetProjectDetailView(DetailView):
+class BudgetProjectDetailView(LoginRequiredMixin, DetailView):
     model = BudgetProject
-    template_name = 'apps/budget/detail_budget.html'
-    context_object_name = 'budget'
+    template_name = 'apps/budgets/detail_budget.html'
+    context_object_name = 'budgets'

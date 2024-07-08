@@ -1,7 +1,7 @@
 from django.urls import path
 from .views import BudgetProjectCreateView, BudgetProjectDetailView
 
-app_name = 'budget'
+app_name = 'budgets'
 
 urlpatterns = [
     path('create/', BudgetProjectCreateView.as_view(), name='create_budget'),
