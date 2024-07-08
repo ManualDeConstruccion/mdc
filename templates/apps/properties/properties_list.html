@@ -1,0 +1,7 @@
+{% extends 'components/layouts/applayout.html' %}
+{% block content %}
+<h2>Properties List</h2>
+{% for property in properties %}
+  <p>{{ property.name }} - <a href="{% url 'properties:detail' property.id %}">View</a></p>
+{% endfor %}
+{% endblock %}
