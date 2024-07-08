@@ -59,7 +59,7 @@ class Stage(TimeStampedModel):
     ], default='fixed')
     time_frame = models.IntegerField(_('Time Frame (days)'), default=0, help_text=_('Number of days after the start date if by date'))
     payment_percentage = models.DecimalField(_('Payment Percentage'), max_digits=5, decimal_places=2, null=True, blank=True,
-                                             help_text=_('Percentage of the total project budget if by percentage'))
+                                             help_text=_('Percentage of the total project budgets if by percentage'))
     milestone = models.CharField(_('Milestone'), max_length=255, blank=True, null=True, help_text=_('Milestone that triggers the payment'))
 
     def __str__(self):

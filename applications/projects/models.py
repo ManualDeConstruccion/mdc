@@ -2,12 +2,14 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 from model_utils.models import TimeStampedModel
 
+from applications.users.models import User
+
 
 class Project(TimeStampedModel):
     name = models.CharField(max_length=200, verbose_name=_('Nombre'))
     description = models.CharField(max_length=1000, verbose_name=_('Descripción'))
-    property = models.ForeignKey('properties.Property', on_delete=models.SET_NULL, null=True,  verbose_name=_('Propiedad'), related_name='projects')
-
+    property = models.ForeignKey('properties.Property', on_delete=models.SET_NULL, null=True, blank=True,  verbose_name=_('Propiedad'), related_name='projects')
+    project_owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('Creador'))
     is_active = models.BooleanField(default=True, verbose_name=_('Activo'))
 
     def __str__(self):

@@ -31,15 +31,31 @@
                 <a class="block py-2.5 px-6 hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer flex justify-between items-center">
                     <div class="flex items-center justify-center space-x-2">
                         <i class="material-icons">flag</i>
-                        <span class="ml-4">Presupuesto</span>
+                        <span class="ml-4">Presupuestos</span>
                     </div>
                 </a>
                 <!-- Dropdown Menu -->
                 <div x-show="selected === {{ app.id }}" class="bg-gray-100 dark:bg-gray-700 transition duration-300" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
-                  <a href="{% url 'budget:create_budget' %}" class="block py-2 px-6 hover:bg-gray-200 dark:hover:bg-gray-800">Crear presupuesto</a>
+                  <a href="{% url 'budgets:create_budget' %}" class="block py-2 px-6 hover:bg-gray-200 dark:hover:bg-gray-800">Crear presupuesto</a>
                 </div>
             </div>
             <!-- Final Botón Presupuesto -->
+
+            <!-- Botón Proyecto -->
+            <div class="py-2">
+                <a class="block py-2.5 px-6 hover:text-indigo-500 dark:hover:text-indigo-400 cursor-pointer flex justify-between items-center">
+                    <div class="flex items-center justify-center space-x-2">
+                        <i class="material-icons">flag</i>
+                        <span class="ml-4">Proyectos</span>
+                    </div>
+                </a>
+                <!-- Dropdown Menu -->
+                <div x-show="selected === {{ app.id }}" class="bg-gray-100 dark:bg-gray-700 transition duration-300" x-transition:enter="transition ease-out duration-300" x-transition:enter-start="opacity-0 scale-90" x-transition:enter-end="opacity-100 scale-100" x-transition:leave="transition ease-in duration-300" x-transition:leave-start="opacity-100 scale-100" x-transition:leave-end="opacity-0 scale-90">
+                  <a href="{% url 'projects:create_project' %}" class="block py-2 px-6 hover:bg-gray-200 dark:hover:bg-gray-800">Crear proyecto</a>
+                  <a href="{% url 'projects:project_list' %}" class="block py-2 px-6 hover:bg-gray-200 dark:hover:bg-gray-800">Lista proyectos</a>
+                </div>
+            </div>
+            <!-- Final Botón Proyecto -->
 
             {% for app in apps %}
             <div class="py-2">
