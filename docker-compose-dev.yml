@@ -13,10 +13,10 @@ services:
 
   mdc_web:
     build: .
-    command: bash -c "python manage.py migrate && gunicorn buildguide.wsgi:application --bind 0.0.0.0:8000"
+    command: bash -c "python manage.py migrate && python manage.py collectstatic --no-input && gunicorn buildguide.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - .:/app
-      - ./static:/static
+      - ./staticfiles:/app/staticfiles
     depends_on:
       - mdc_db
     env_file:

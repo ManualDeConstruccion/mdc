@@ -33,8 +33,8 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/staticfiles/'
-STATICFILES_DIRS = [BASE_DIR.child('staticfiles')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_DIRS = [BASE_DIR.child('static')]
 
 # Media files
 # Defines the base URL and directory to serve user uploaded files during development

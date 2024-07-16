@@ -31,3 +31,6 @@ urlpatterns = [
     re_path(r'^login/$', RedirectView.as_view(url='/accounts/login/', permanent=True)),
     re_path(r'^logout/$', RedirectView.as_view(url='/accounts/logout/', permanent=True))
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
