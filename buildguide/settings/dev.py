@@ -1,9 +1,13 @@
 from .base import *
+import environ
 import os
-from dotenv import load_dotenv
 
 # Carga las variables de entorno desde .env
-load_dotenv()
+# we load the variables from the .env file to the environment
+env = environ.Env()
+environ.Env.read_env()
+
+SECRET_KEY = env("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -15,11 +19,11 @@ ALLOWED_HOSTS = ['*']
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mdc',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': env("DB_NAME_DEV"),
+        'USER': env("DB_USER_DEV"),
+        'PASSWORD': env("DB_PASSWORD_DEV"),
+        'HOST': env("DB_HOST_DEV"),
+        'PORT': env("DB_PORT_DEV"),
     }
 }
 
@@ -31,28 +35,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / "static",]
+STATIC_ROOT = '/static/'
+STATICFILES_DIRS = [BASE_DIR.child('static')]
 
 # Media files
 # Defines the base URL and directory to serve user uploaded files during development
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = BASE_DIR.child('media')
 
-# Logging configuration for development
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'DEBUG',
-            'propagate': True,
-        },
-    },
-}

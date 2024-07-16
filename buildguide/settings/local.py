@@ -16,7 +16,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mdc',
         'USER': 'postgres',
-        'PASSWORD': 'Subdere.2022',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -37,22 +37,3 @@ MEDIA_ROOT = BASE_DIR.child('media')
 # Configure a local email backend if necessary, for development purposes
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-# Logging
-# Customize logging for local development if needed
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': 'WARNING', #cambiar a debug para más logs
-            'propagate': True,
-        },
-    },
-}
