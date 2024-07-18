@@ -31,6 +31,7 @@ class ProjectDetailView(LoginRequiredMixin, DetailView):
     template_name = 'apps/projects/project_detail.html'
     context_object_name = 'project'
 
+
 # Vista para editar proyectos
 class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
@@ -42,6 +43,7 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         form.instance.project_owner = self.request.user
         return super().form_valid(form)
+
 
 # Vista para eliminar proyectos
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):
