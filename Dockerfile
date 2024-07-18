@@ -31,7 +31,17 @@ COPY . /app/
 # Variable de entorno para apuntar a dev.py
 ENV DJANGO_SETTINGS_MODULE=buildguide.settings.dev
 
-#Reemplaza para el despligue
+# Copia el script de inicio
+COPY entrypoint.sh /app/
+
+# Asegúrate de que el script de inicio tenga permisos de ejecución
+RUN chmod +x /app/entrypoint.sh
+
+# Expone el puerto en el que la aplicación estará escuchando
 EXPOSE 8000
+
+# Configura el entrypoint para ejecutar el script de inicio
+ENTRYPOINT ["/app/entrypoint.sh"]
+
 # Especificar el comando para ejecutar la aplicación con Gunicorn
 CMD ["gunicorn", "buildguide.wsgi:application", "--bind", "0.0.0.0:8000"]
