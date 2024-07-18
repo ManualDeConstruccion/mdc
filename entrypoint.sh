@@ -1,5 +1,7 @@
+#!/bin/sh
+
 # Ejecuta collectstatic para reunir archivos estáticos
-python manage.py collectstatic --noinput
+python3 manage.py collectstatic --noinput
 
 # Verifica la existencia de la carpeta y lista su contenido
 if [ -d "/app/staticfiles" ]; then

@@ -41,7 +41,7 @@ RUN chmod +x /app/entrypoint.sh
 EXPOSE 8000
 
 # Configura el entrypoint para ejecutar el script de inicio
-ENTRYPOINT ["/app/entrypoint.sh"]
+#ENTRYPOINT ["/app/entrypoint.sh"]
 
 # Especificar el comando para ejecutar la aplicación con Gunicorn
-CMD ["gunicorn", "buildguide.wsgi:application", "--bind", "0.0.0.0:8000"]
+CMD ["python manage.py collectstatic --no-input && gunicorn", "buildguide.wsgi:application", "--bind", "0.0.0.0:8000"]
