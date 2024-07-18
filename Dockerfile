@@ -29,7 +29,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . /app/
 
 # Variable de entorno para apuntar a dev.py
-ENV DJANGO_SETTINGS_MODULE=buildguide.settings.dev
+ENV DJANGO_SETTINGS_MODULE=buildguide.settings.staging
 
 # Copia el script de inicio
 COPY entrypoint.sh /app/
