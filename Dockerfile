@@ -31,6 +31,9 @@ COPY . /app/
 # Variable de entorno para apuntar a dev.py
 ENV DJANGO_SETTINGS_MODULE=buildguide.settings.dev
 
+# Collect static files
+RUN python manage.py collectstatic --no-input
+
 #Reemplaza para el despligue
 EXPOSE 8000
 # Especificar el comando para ejecutar la aplicación con Gunicorn
