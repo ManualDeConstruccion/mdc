@@ -11,6 +11,10 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
     template_name = 'apps/projects/create_project.html'
     success_url = reverse_lazy('projects:project_list')
 
+    def post(self, request, *args, **kwargs):
+        print("POST data Project:", request.POST)
+        return super().post(request, *args, **kwargs)
+
     def form_valid(self, form):
         form.instance.project_owner = self.request.user
         return super().form_valid(form)
@@ -31,6 +35,7 @@ class ProjectDetailView(LoginRequiredMixin, DetailView):
     template_name = 'apps/projects/project_detail.html'
     context_object_name = 'project'
 
+
 # Vista para editar proyectos
 class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     model = Project
@@ -42,6 +47,7 @@ class ProjectUpdateView(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         form.instance.project_owner = self.request.user
         return super().form_valid(form)
+
 
 # Vista para eliminar proyectos
 class ProjectDeleteView(LoginRequiredMixin, DeleteView):

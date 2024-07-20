@@ -6,7 +6,7 @@ from applications.users.models import User
 
 
 class Project(TimeStampedModel):
-    name = models.CharField(max_length=200, verbose_name=_('Nombre'))
+    name = models.CharField(max_length=200, verbose_name=_('Nombre del proyecto'))
     description = models.CharField(max_length=1000, verbose_name=_('Descripción'))
     property = models.ForeignKey('properties.Property', on_delete=models.SET_NULL, null=True, blank=True,  verbose_name=_('Propiedad'), related_name='projects')
     project_owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('Creador'))
