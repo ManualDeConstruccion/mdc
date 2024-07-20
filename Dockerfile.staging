@@ -37,7 +37,7 @@ COPY entrypoint.staging.sh /usr/src/app/entrypoint.staging.sh
 RUN chmod +x /usr/src/app/entrypoint.staging.sh
 
 # Copiar el archivo de configuración de nginx
-COPY nginx.full.conf /etc/nginx/conf.d/default.conf
+# COPY nginx.full.conf /etc/nginx/conf.d/default.conf
 
 ENTRYPOINT ["/usr/src/app/entrypoint.staging.sh"]
 
