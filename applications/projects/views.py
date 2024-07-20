@@ -1,3 +1,4 @@
+from django.http import JsonResponse
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -8,7 +9,7 @@ from .forms import ProjectForm
 class ProjectCreateView(LoginRequiredMixin, CreateView):
     model = Project
     form_class = ProjectForm
-    template_name = 'apps/projects/create_project.html'
+    template_name = 'apps/projects/create_project_form.html'
     success_url = reverse_lazy('projects:project_list')
 
     def post(self, request, *args, **kwargs):
@@ -16,8 +17,24 @@ class ProjectCreateView(LoginRequiredMixin, CreateView):
         return super().post(request, *args, **kwargs)
 
     def form_valid(self, form):
-        form.instance.project_owner = self.request.user
+        self.object = form.save(commit=False)
+        self.object.project_owner = self.request.user
+        self.object.save()
+        if self.request.is_ajax():
+            return JsonResponse({
+                'success': True,
+                'project': {
+                    'id': self.object.id,
+                    'name': self.object.name,
+                    'description': self.object.description
+                }
+            })
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        if self.request.is_ajax():
+            return JsonResponse({'success': False, 'error': form.errors})
+        return super().form_invalid(form)
 
 
 class ProjectListView(LoginRequiredMixin, ListView):
