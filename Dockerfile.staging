@@ -33,12 +33,12 @@ COPY . /app/
 ENV DJANGO_SETTINGS_MODULE=buildguide.settings.staging
 
 # Copiar el archivo entrypoint.sh
-COPY entrypoint.staging.sh /usr/src/app/entrypoint.staging.sh
-RUN chmod +x /usr/src/app/entrypoint.staging.sh
+COPY entrypoint.staging.sh /app/entrypoint.staging.sh
+RUN chmod +x /app/entrypoint.staging.sh
 
 # Copiar el archivo de configuración de nginx
-# COPY nginx.full.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-ENTRYPOINT ["/usr/src/app/entrypoint.staging.sh"]
+ENTRYPOINT ["/app/entrypoint.staging.sh"]
 
 
