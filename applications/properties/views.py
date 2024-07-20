@@ -11,6 +11,10 @@ class PropertyCreateView(LoginRequiredMixin, CreateView):
     template_name = 'apps/projects/create_project.html'
     success_url = reverse_lazy('properties:list')
 
+    def post(self, request, *args, **kwargs):
+        print("POST data Property:", request.POST)
+        return super().post(request, *args, **kwargs)
+
 
 class PropertyListView(LoginRequiredMixin, ListView):
     model = Property
