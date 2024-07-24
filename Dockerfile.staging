@@ -33,17 +33,14 @@ COPY . /app/
 ENV DJANGO_SETTINGS_MODULE=buildguide.settings.staging
 
 # Copiar el archivo entrypoint.sh
-COPY entrypoint.staging.sh /usr/src/app/entrypoint.staging.sh
-RUN chmod +x /usr/src/app/entrypoint.sh
-
-# Remove de default nginx site and forward request and error logs to docker log collector
-RUN rm  /etc/nginx/sites-enabled/default \
-    && ln -sf /dev/stdout /var/log/nginx/access.log \
-    && ln -sf /dev/stderr /var/log/nginx/error.log
+COPY entrypoint.staging.sh /app/entrypoint.staging.sh
+RUN chmod +x /app/entrypoint.staging.sh
 
 # Copiar el archivo de configuración de nginx
-COPY nginx.full.conf /etc/nginx/conf.d/default.conf
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-ENTRYPOINT ["/usr/src/app/entrypoint.staging.sh"]
+RUN ls -l /app/
+
+CMD ["/app/entrypoint.staging.sh"]
 
 
