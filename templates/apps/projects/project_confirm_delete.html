@@ -1,0 +1,14 @@
+{% extends 'components/layouts/applayout.html' %}
+
+{% block content %}
+<div class="container">
+    <h1>Confirmar eliminación</h1>
+    <p>¿Estás seguro que deseas eliminar el proyecto "{{ project.name }}"?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'projects:project_list' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+{% endblock %}
