@@ -31,6 +31,8 @@ THIRD_PARTY_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'storages',
+    'rest_framework',
+    'drf_yasg',
     'django_htmx',
 ]
 

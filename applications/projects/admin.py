@@ -11,7 +11,7 @@ class ProjectCollaboratorInline(admin.TabularInline):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description', 'property', 'is_active')
+    list_display = ('id', 'name', 'description', 'property', 'is_active')
     list_filter = ('is_active', 'property__region')
     search_fields = ('name', 'description', 'property__name')
     inlines = [ProjectCollaboratorInline]

@@ -27,12 +27,13 @@
                         </div>
                     </div>
                 </label>
+                <div>Project ID: {{ project.id }}</div>
                 <input type="text"
                        name="name"
-                       hx-post="{% url 'projects:update_project' project.id %}"
+                       hx-patch="/projects/api/projects/{{ project.id }}/"
                        hx-trigger="keyup changed delay:1s"
                        hx-target="#inputtitle"
-                       hx-method="patch"
+                       hx-swap="outerHTML"
                        class="w-full leading-5 relative py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
                        id="inputtitle"
                        placeholder="Ingrese el nombre del proyecto">
@@ -43,10 +44,10 @@
                 <label for="inputdes" class="inline-block mb-2">Descripción de proyecto</label>
                 <textarea type="text"
                           name="description"
-                          hx-post="{% url 'projects:update_project' project.id %}"
+                          hx-patch="/projects/api/projects/{{ project.id }}/"
                           hx-trigger="keyup changed delay:1s"
                           hx-target="#inputdes"
-                          hx-method="patch"
+                          hx-swap="outerHTML"
                           class="w-full leading-5 relative py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
                           id="inputdes">
                 </textarea>
