@@ -17,7 +17,6 @@ DATABASES = {
         'NAME': 'mdc',
         'USER': 'postgres',
         'PASSWORD': 'Subdere.2022',
-        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
     }
