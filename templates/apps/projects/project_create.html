@@ -1,0 +1,18 @@
+{% extends 'components/layouts/applayout.html' %}
+{% block content %}
+
+<main class="pt-6 -mt-2">
+    <div class="mx-auto py-2 sm:px-2">
+        <!-- row -->
+        <div class="flex flex-wrap flex-row">
+            <div class="flex-shrink max-w-full px-4 w-full">
+                <p class="text-xl font-bold mt-3 mb-5">Crear Proyecto</p>
+            </div>
+
+            {% include 'apps/projects/create_project_form.html' %}
+
+        </div>
+    </div>
+</main>
+
+{% endblock %}

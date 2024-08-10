@@ -7,6 +7,12 @@ class ProjectForm(forms.ModelForm):
         model = Project
         fields = ['name', 'description']
         widgets = {
-            'name': forms.TextInput(attrs={'class': 'form-control'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'})
+            'name': forms.TextInput(attrs={
+                'class': 'form-control',
+                'id': 'project_name',
+            }),
+            'description': forms.Textarea(attrs={
+                'class': 'form-control',
+                'id': 'project_description',
+            })
         }

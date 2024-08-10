@@ -8,7 +8,7 @@ from .forms import PropertyForm
 class PropertyCreateView(LoginRequiredMixin, CreateView):
     model = Property
     form_class = PropertyForm
-    template_name = 'apps/projects/create_project.html'
+    template_name = 'apps/properties/create_property_form.html'
     success_url = reverse_lazy('properties:list')
 
     def post(self, request, *args, **kwargs):
