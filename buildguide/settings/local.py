@@ -5,9 +5,10 @@ import os
 # Carga las variables de entorno desde .env
 # we load the variables from the .env file to the environment
 env = environ.Env()
-environ.Env.read_env()
+# Especifica la ruta del archivo .env si no está en el directorio raíz
+env.read_env(env.str('ENV_PATH', '.env'))
 
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
+SECRET_KEY = 'django-insecure-local-secret-key-should-be-unique-and-secret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -21,7 +22,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mdc',
         'USER': 'postgres',
-        'PASSWORD': 'postgres',
+        'PASSWORD': env('DB_PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
