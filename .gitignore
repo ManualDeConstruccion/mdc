@@ -20,6 +20,3 @@ media
 
 # Node modules
 node_modules/
-
-# Settings
-buildguide/settings/local.py
