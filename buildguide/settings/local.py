@@ -1,31 +1,41 @@
 from .base import *
+import environ
+import os
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-local-secret-key-should-be-unique-and-secret'
+# Carga las variables de entorno desde .env
+# we load the variables from the .env file to the environment
+env = environ.Env()
+environ.Env.read_env()
+
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*']
+# Allow all host headers
+ALLOWED_HOSTS = ['*']
 
 # Database
-# https://docs.djangoproject.com/en/5.0/ref/settings/#databases
-# Adjust the database settings for your local development environment
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'mdc',
         'USER': 'postgres',
-        'PASSWORD': 'Subdere.2022',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 
+# Email Backend for development
+# Use console backend for development. Emails will be printed to the console.
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
+
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [BASE_DIR.child('static')]
 
 # Media files
@@ -33,6 +43,3 @@ STATICFILES_DIRS = [BASE_DIR.child('static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR.child('media')
 
-# Email Backend
-# Configure a local email backend if necessary, for development purposes
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
