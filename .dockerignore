@@ -4,4 +4,6 @@
 __pycache__
 README.md
 Dockerfile
+Dockerfile.staging
 docker-compose*.yml
+.env
