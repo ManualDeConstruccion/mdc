@@ -12,7 +12,9 @@ services:
       - .env
 
   mdc_web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.staging
     command: bash -c "python manage.py migrate && python manage.py collectstatic --no-input && gunicorn buildguide.wsgi:application --bind 0.0.0.0:8000"
     volumes:
       - .:/app
