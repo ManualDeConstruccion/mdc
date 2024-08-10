@@ -50,5 +50,3 @@ EXPOSE 8000
 
 # Comando de entrada
 ENTRYPOINT ["/app/entrypoint.staging.sh"]
-
-
