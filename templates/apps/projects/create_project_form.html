@@ -1,4 +1,5 @@
 {% block content %}
+{% load static %}
 
 <div class="flex-shrink max-w-full px-4 w-full mb-6">
     <div class="p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg h-full">
@@ -34,33 +35,28 @@
                            hx-patch="/projects/api/projects/{{ project.id }}/"
                            hx-trigger="keyup changed delay:1s"
                            hx-target="#inputtitle-wrapper"
-                           hx-indicator="#saving-indicator-{{ project.id }}"
                            hx-swap="none"
                            class="w-full leading-5 relative py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
                            id="inputtitle"
                            placeholder="Ingrese el nombre del proyecto">
-                    <div id="saving-indicator-{{ project.id }}" class="htmx-indicator" style="display: none;">
-                        <svg class="animate-spin h-5 w-5 text-blue-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                    </div>
+                    <div id="saving-indicator-{{ project.id }}" style="display: none;"></div>
                 </div>
             </div>
 
             <!-- Campo descripción proyecto -->
             <div class="flex-shrink max-w-full px-4 w-full mb-4">
                 <label for="inputdes" class="inline-block mb-2">Descripción de proyecto</label>
-                <textarea type="text"
-                          name="description"
-                          value="{{ project.description }}"
-                          hx-patch="/projects/api/projects/{{ project.id }}/"
-                          hx-trigger="keyup changed delay:1s"
-                          hx-target="#inputdes"
-                          hx-swap="outerHTML"
-                          class="w-full leading-5 relative py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
-                          id="inputdes">
-                </textarea>
+                <div id="inputdes-wrapper">
+                    <textarea name="description"
+                              hx-patch="/projects/api/projects/{{ project.id }}/"
+                              hx-trigger="keyup changed delay:1s"
+                              hx-target="#inputdes-wrapper"
+                              hx-swap="none"
+                              class="w-full leading-5 relative py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
+                              id="inputdes"
+                              placeholder="Ingrese la descripción del proyecto">{{ project.description }}</textarea>
+                    <div id="saving-indicator-description-{{ project.id }}" style="display: none;"></div>
+                </div>
             </div>
 
             <!-- Botón Crear proyecto -->
@@ -79,25 +75,12 @@
 
     </div>
 </div>
+{% endblock %}
 
+{% block extra_scripts %}
+<script src="{% static 'js/utils/setupSpinner.js' %}"></script>
 <script>
-    document.body.addEventListener('htmx:afterOnLoad', function(event) {
-        if (event.target.id === 'inputtitle-wrapper') {
-            var indicator = document.getElementById('saving-indicator-{{ project.id }}');
-            indicator.style.display = 'block'; // Asegúrate de que el indicador sea visible
-            indicator.innerHTML = `<div class="inline-block">
-                                      <span class="relative flex h-5 w-5">
-                                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                                        <span class="relative inline-flex rounded-full h-5 w-5 bg-blue-500"></span>
-                                      </span>
-                                    </div>`;
-            setTimeout(function() {
-                indicator.style.display = 'none'; // Opcional: ocultar el ícono de confirmación después de un tiempo
-            }, 3000);
-        }
-    });
-
+    setupSpinner('inputtitle', 'saving-indicator-{{ project.id }}');
+    setupSpinner('inputdes', 'saving-indicator-description-{{ project.id }}');
 </script>
-
-
 {% endblock %}
