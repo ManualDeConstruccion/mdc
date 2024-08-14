@@ -15,8 +15,6 @@ from django.urls import reverse
 @login_required
 def create_and_edit_project(request):
     new_project = Project(
-        name="Nuevo Proyecto",
-        description="",
         project_owner=request.user,
         is_active=True
     )
