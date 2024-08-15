@@ -15,7 +15,15 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
         model = Project
         fields = '__all__'
 
-    def validate_name(self, value):
-        if Project.objects.filter(name=value).exists():
-            raise serializers.ValidationError("El nombre del proyecto debe ser único.")
-        return value
+        extra_kwargs = {
+            'name': {
+                'error_messages': {
+                    'max_length': 'El nombre del proyecto no puede tener más de 100 caracteres.'
+                }
+            },
+            'description': {
+                'error_messages': {
+                    'max_length': 'La descripción no puede tener más de 1000 caracteres.',
+                }
+            }
+        }
