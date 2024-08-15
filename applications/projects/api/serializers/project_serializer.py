@@ -17,5 +17,5 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
 
     def validate_name(self, value):
         if Project.objects.filter(name=value).exists():
-            raise serializers.ValidationError({"name": "El nombre del proyecto debe ser único."})
+            raise serializers.ValidationError("El nombre del proyecto debe ser único.")
         return value
