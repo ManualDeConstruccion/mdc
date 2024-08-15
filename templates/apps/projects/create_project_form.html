@@ -40,6 +40,7 @@
                            id="inputtitle"
                            placeholder="Ingrese el nombre del proyecto">
                     <div id="saving-indicator-{{ project.id }}" style="display: none;"></div>
+                    <div id="error-inputtitle" class="text-red-500 text-sm mt-2" style="display: none;"></div>
                 </div>
             </div>
 
@@ -80,7 +81,7 @@
 {% block extra_scripts %}
 <script src="{% static 'js/utils/setupSpinner.js' %}"></script>
 <script>
-    setupSpinner('inputtitle', 'saving-indicator-{{ project.id }}');
+    setupSpinner('inputtitle', 'saving-indicator-{{ project.id }}', 'error-inputtitle');
     setupSpinner('inputdes', 'saving-indicator-description-{{ project.id }}');
 </script>
 {% endblock %}
