@@ -18,12 +18,14 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
         extra_kwargs = {
             'name': {
                 'error_messages': {
-                    'max_length': 'El nombre del proyecto no puede tener más de 100 caracteres.'
+                    'max_length': 'El nombre del proyecto no puede tener más de 100 caracteres.',
+                    'blank': 'Este campo es obligatorio'
                 }
             },
             'description': {
                 'error_messages': {
                     'max_length': 'La descripción no puede tener más de 1000 caracteres.',
+                    'blank': 'Este campo es obligatorio'
                 }
             }
         }

@@ -10,7 +10,7 @@
                 <div class="flex items-center mb-2">
                     <label for="inputtitle" class="inline-block mb-2">
                         Título proyecto
-                        <div x-data="{ tooltips: false }" class="relative inline-block mb-3">
+                        <div x-data="{ tooltips: false }" class="relative inline-block">
                             <button x-on:mouseover="tooltips = true" x-on:mouseleave="tooltips = false"
                                     type="button" class="inline-block">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
@@ -32,17 +32,16 @@
                         <div id="saving-indicator-name-{{ project.id }}" class="ml-2" style="display: none;">
                         </div>
                 </div>
-                <div id="inputtitle-wrapper" class="relative flex items-center">
-                    <input type="text"
+                <div id="inputtitle-wrapper">
+                    <textarea
                            name="name"
-                           value="{{ project.name }}"
                            hx-patch="/projects/api/projects/{{ project.id }}/"
                            hx-trigger="keyup changed delay:1s"
                            hx-target="#inputtitle-wrapper"
                            hx-swap="none"
                            class="w-full leading-5 py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
                            id="inputtitle"
-                           placeholder="Ingrese el nombre del proyecto">
+                           placeholder="Ingrese el nombre del proyecto">{{ project.name }}</textarea>
                 </div>
 
                 <div class="flex justify-between items-center mt-2">
@@ -68,8 +67,8 @@
                               hx-swap="none"
                               class="w-full leading-5 relative py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
                               id="inputdes"
-                              placeholder="Ingrese la descripción del proyecto">{{ project.description }}
-                    </textarea>
+                              placeholder="Ingrese la descripción del proyecto"
+                              style="resize: none; overflow: hidden; min-height: 40px;">{{ project.description }}</textarea>
                 </div>
                 <div class="flex justify-between items-center mt-2">
                     <div class="flex-grow">
@@ -100,10 +99,13 @@
 {% block extra_scripts %}
 <script src="{% static 'js/utils/setupSpinner.js' %}"></script>
 <script src="{% static 'js/utils/setupCharacterCounter.js' %}"></script>
+<script src="{% static 'js/utils/autoResizeTextArea.js' %}"></script>
 <script>
     setupSpinner('inputtitle', 'saving-indicator-name-{{ project.id }}', 'error-inputtitle');
     setupCharacterCounter('inputtitle', 'inputtitle-counter', 100);
+    autoResizeTextarea('inputtitle');
     setupSpinner('inputdes', 'saving-indicator-description-{{ project.id }}', 'error-inputdes');
     setupCharacterCounter('inputdes', 'inputdes-counter', 1000);
+    autoResizeTextarea('inputdes');
 </script>
 {% endblock %}
