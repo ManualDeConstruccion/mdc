@@ -23,6 +23,7 @@ LOCAL_APPS = [
     'applications.properties',
     'applications.projects',
     'applications.budgets',
+    'applications.architecture_projects',
 ]
 
 THIRD_PARTY_APPS = [

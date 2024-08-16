@@ -6,7 +6,7 @@ from applications.users.models import User
 
 
 class Project(TimeStampedModel):
-    name = models.CharField(max_length=100, verbose_name=_('Nombre del proyecto'), unique=True,
+    name = models.CharField(max_length=100, verbose_name=_('Nombre del proyecto'),
         error_messages = {
             'unique': _('Este nombre de proyecto ya existe. Debes escoger otro.')
         }
@@ -19,6 +19,12 @@ class Project(TimeStampedModel):
     class Meta:
         verbose_name = _('Proyecto')
         verbose_name_plural = _('Proyectos')
+        constraints = [
+            models.UniqueConstraint(
+                fields=['name', 'project_owner'],
+                name='unique_project_name_per_owner'
+            )
+        ]
 
     def __str__(self):
         return self.name
