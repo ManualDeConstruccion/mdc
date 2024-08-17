@@ -11,13 +11,13 @@ class ProjectCollaboratorInline(admin.TabularInline):
 
 
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'description', 'property', 'is_active')
+    list_display = ('id', 'project_name', 'project_description', 'property', 'is_active')
     list_filter = ('is_active', 'property__region')
-    search_fields = ('name', 'description', 'property__name')
+    search_fields = ('project_name', 'project_description', 'property__name')
     inlines = [ProjectCollaboratorInline]
     fieldsets = (
         (None, {
-            'fields': ('name', 'description', 'property', 'is_active')
+            'fields': ('project_name', 'project_description', 'property', 'is_active')
         }),
     )
 
@@ -25,7 +25,7 @@ class ProjectAdmin(admin.ModelAdmin):
 class ProjectCollaboratorAdmin(admin.ModelAdmin):
     list_display = ('project', 'collaborator', 'role', 'can_edit', 'is_legal_rep', 'company')
     list_filter = ('project', 'role', 'company', 'can_edit', 'is_legal_rep')
-    search_fields = ('project__name', 'collaborator__name', 'role__role')
+    search_fields = ('project__project_name', 'collaborator__name', 'role__role')
     autocomplete_fields = ['project', 'collaborator', 'role', 'company']
 
 

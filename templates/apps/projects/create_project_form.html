@@ -22,8 +22,8 @@
                             <!-- tooltip area -->
                             <div class="absolute top-auto bottom-full mb-3" x-cloak
                                  x-show.transition.origin.top="tooltips">
-                                <div class="w-32 p-3 -mb-1 text-sm leading-tight text-white bg-black rounded-lg shadow-lg text-center">
-                                    Título global del proyecto
+                                <div class="w-40 p-3 -mb-1 text-sm leading-tight text-white bg-black rounded-lg shadow-lg text-center">
+                                    Título global del proyecto. Ejemplos: 'Proyecto Clínica Salud', 'Casa playa Agustín Miranda'
                                 </div>
                                 <div class="absolute transform -rotate-45 p-1 w-1 bg-black bottom-0 -mb-2 ltr:ml-6 rtl:mr-6"></div>
                             </div>
@@ -34,14 +34,14 @@
                 </div>
                 <div id="inputtitle-wrapper">
                     <textarea
-                           name="name"
+                           name="project_name"
                            hx-patch="/projects/api/projects/{{ project.id }}/"
                            hx-trigger="keyup changed delay:1s"
                            hx-target="#inputtitle-wrapper"
                            hx-swap="none"
                            class="w-full leading-5 py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
                            id="inputtitle"
-                           placeholder="Ingrese el nombre del proyecto">{{ project.name }}</textarea>
+                           placeholder="Ingrese el nombre del proyecto">{{ project.project_name }}</textarea>
                 </div>
 
                 <div class="flex justify-between items-center mt-2">
@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div id="inputdes-wrapper">
-                    <textarea name="description"
+                    <textarea name="project_description"
                               hx-patch="/projects/api/projects/{{ project.id }}/"
                               hx-trigger="keyup changed delay:1s"
                               hx-target="#inputdes-wrapper"
@@ -68,7 +68,7 @@
                               class="w-full leading-5 relative py-2 px-4 rounded text-gray-800 bg-white border border-gray-300 overflow-x-auto focus:outline-none focus:border-gray-400 focus:ring-0 dark:text-gray-300 dark:bg-gray-700 dark:border-gray-700 dark:focus:border-gray-600"
                               id="inputdes"
                               placeholder="Ingrese la descripción del proyecto"
-                              style="resize: none; overflow: hidden; min-height: 40px;">{{ project.description }}</textarea>
+                              style="resize: none; overflow: hidden; min-height: 40px;">{{ project.project_description }}</textarea>
                 </div>
                 <div class="flex justify-between items-center mt-2">
                     <div class="flex-grow">

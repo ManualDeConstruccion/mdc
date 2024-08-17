@@ -6,5 +6,5 @@ from applications.projects.models import Project
 @receiver(post_save, sender=Project)
 def assign_unique_name(sender, instance, created, **kwargs):
     if created:  # Comprueba si el objeto acaba de ser creado
-        instance.name = f"Proyecto Nuevo {instance.id}"
+        instance.project_name = f"Proyecto Nuevo {instance.id}"
         instance.save()

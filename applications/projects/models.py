@@ -6,12 +6,8 @@ from applications.users.models import User
 
 
 class Project(TimeStampedModel):
-    name = models.CharField(max_length=100, verbose_name=_('Nombre del proyecto'),
-        error_messages = {
-            'unique': _('Este nombre de proyecto ya existe. Debes escoger otro.')
-        }
-    )
-    description = models.CharField(max_length=1000, verbose_name=_('Descripción'))
+    project_name = models.CharField(max_length=100, verbose_name=_('Nombre del proyecto'))
+    project_description = models.CharField(max_length=1000, verbose_name=_('Descripción'))
     property = models.ForeignKey('properties.Property', on_delete=models.SET_NULL, null=True, blank=True,  verbose_name=_('Propiedad'), related_name='projects')
     project_owner = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('Creador'))
     is_active = models.BooleanField(default=True, verbose_name=_('Activo'))
@@ -21,13 +17,13 @@ class Project(TimeStampedModel):
         verbose_name_plural = _('Proyectos')
         constraints = [
             models.UniqueConstraint(
-                fields=['name', 'project_owner'],
-                name='unique_project_name_per_owner'
+                fields=['project_name', 'project_owner'],
+                name='unique_project_name_per_owner',
             )
         ]
 
     def __str__(self):
-        return self.name
+        return self.project_name
 
 
 class ProjectCollaborator(TimeStampedModel):
