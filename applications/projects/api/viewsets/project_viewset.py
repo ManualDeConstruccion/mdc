@@ -65,7 +65,9 @@ class ProjectViewSet(viewsets.ModelViewSet):
         partial = kwargs.pop('partial', False)
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=partial)
+        print("Datos recibidos para creación:", request.data)
         if serializer.is_valid():
             self.perform_update(serializer)
             return Response(serializer.data)
+        print("Errores del serializador:", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

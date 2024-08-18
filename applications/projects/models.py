@@ -15,12 +15,6 @@ class Project(TimeStampedModel):
     class Meta:
         verbose_name = _('Proyecto')
         verbose_name_plural = _('Proyectos')
-        constraints = [
-            models.UniqueConstraint(
-                fields=['project_name', 'project_owner'],
-                name='unique_project_name_per_owner',
-            )
-        ]
 
     def __str__(self):
         return self.project_name
