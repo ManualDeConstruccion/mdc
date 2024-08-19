@@ -28,6 +28,7 @@ urlpatterns = [
     path('projects/', include('applications.projects.urls')),
     path('properties/', include('applications.properties.urls')),
     path('budgets/', include('applications.budgets.urls')),
+    path('architecture-projects/', include('applications.architecture_projects.urls')),
     path('', include('applications.sitecomponents.urls')),
     path('accounts/', include('allauth.urls')),
     re_path(r'^login/$', RedirectView.as_view(url='/accounts/login/', permanent=True)),
