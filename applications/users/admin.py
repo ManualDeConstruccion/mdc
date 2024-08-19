@@ -23,7 +23,7 @@ class UserAdmin(BaseUserAdmin):
             'fields': ('email', 'password1', 'password2', 'is_staff', 'is_superuser'),
         }),
     )
-    list_display = ('email', 'name', 'is_staff', 'rut')
+    list_display = ('id','email', 'name', 'is_staff', 'rut')
     search_fields = ('email', 'name', 'rut')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'profession')
     inlines = [ProfessionInline]

@@ -14,13 +14,12 @@
     <tbody>
         {% for project in projects %}
         <tr>
-            <td>{{ project.name }}</td>
-            <td>{{ project.description }}</td>
+            <td>{{ project.project_name }}</td>
+            <td>{{ project.project_description }}</td>
             <td>{{ project.property.name }}</td>
             <td>
                 <a href="{% url 'projects:project_detail' project.id %}">Ver</a> |
-                <a href="{% url 'projects:edit_project' project.id %}">Editar</a> |
-                <a href="{% url 'projects:delete_project' project.id %}" onclick="return confirm('¿Estás seguro de que quieres eliminar este proyecto?');">Eliminar</a>
+                <a href="{% url 'projects:delete_project' project.id %}">Eliminar</a>
             </td>
         </tr>
         {% empty %}

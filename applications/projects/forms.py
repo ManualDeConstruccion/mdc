@@ -5,13 +5,13 @@ from .models import Project
 class ProjectForm(forms.ModelForm):
     class Meta:
         model = Project
-        fields = ['name', 'description']
+        fields = ['project_name', 'project_description']
         widgets = {
-            'name': forms.TextInput(attrs={
+            'project_name': forms.TextInput(attrs={
                 'class': 'form-control',
                 'id': 'project_name',
             }),
-            'description': forms.Textarea(attrs={
+            'project_description': forms.Textarea(attrs={
                 'class': 'form-control',
                 'id': 'project_description',
             })

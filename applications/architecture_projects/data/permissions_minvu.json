@@ -1,0 +1,48 @@
+{
+  "permissions": [
+    {
+      "permit_type": "Permisos de Obra Menor",
+      "permit_groups": [
+        {
+          "group_name": "Permiso",
+          "subtypes": [
+            "Ampliación Hasta 100 m2",
+            "Modificación sin alterar su Estructura"
+          ]
+        },
+        {
+          "group_name": "Modificacion de Proyecto",
+          "subtypes": [
+            "Solicitud Modificación de Proyecto Ampliación Hasta 100m2"
+          ]
+        }
+      ]
+    },
+    {
+      "permit_type": "Permisos de Edificación",
+      "permit_groups": [
+        {
+          "group_name": "Anteproyecto",
+          "subtypes": [
+            "Solicitud Aprobación Anteproyecto Obra Nueva",
+            "Solicitud Aprobación Anteproyecto Ampliación Mayor a 100m2"
+          ]
+        },
+        {
+          "group_name": "Permiso",
+          "subtypes": [
+            "Obra Nueva",
+            "Ampliación mayor a 100m2"
+          ]
+        },
+        {
+          "group_name": "Modificacion de Proyecto",
+          "subtypes": [
+            "Solicitud Modificación de Proyecto Obra Nueva",
+            "Solicitud Modificación de Proyecto Ampliación Mayor a 100m2"
+          ]
+        }
+      ]
+    }
+  ]
+}
