@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from applications.projects.models import Project
+from django.utils.translation import gettext_lazy as _
 from applications.architecture_projects.models import ArchitectureProject
 import logging
 
@@ -26,4 +27,24 @@ class ArchitectureProjectUpdateSerializer(serializers.ModelSerializer):
             }
         }
 
+    def validate(self, data):
+        # Obtener los valores necesarios para la validación
+        architecture_project_name = data.get('architecture_project_name')
+        project = data.get('project')
+
+        # En caso de que esté actualizando una instancia, necesitas obtener el proyecto desde la instancia si no se provee en el request
+        if self.instance:
+            project = project or self.instance.project
+
+        # Comprueba si el nombre de proyecto de arquitectura ya existe para el mismo proyecto
+        if ArchitectureProject.objects.filter(
+                architecture_project_name=architecture_project_name,
+                project=project
+        ).exclude(id=self.instance.id if self.instance else None).exists():
+            raise serializers.ValidationError({
+                'architecture_project_name': _(
+                    "Este nombre de proyecto de arquitectura ya existe para este proyecto. Debes escoger otro.")
+            })
+
+        return data
 

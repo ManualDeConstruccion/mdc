@@ -48,14 +48,14 @@ class ProjectUpdateSerializer(serializers.ModelSerializer):
                     id=self.instance.id).exists():
                 raise serializers.ValidationError({
                     'project_name': _(
-                        "Este nombre de proyecto ya existe para este propietario. Debes escoger otro.")
+                        "Este nombre de proyecto ya existe. Debes escoger otro.")
                 })
         else:
             # Validación para la creación de un nuevo proyecto
             if Project.objects.filter(project_name=project_name, project_owner=project_owner).exists():
                 raise serializers.ValidationError({
                     'project_name': _(
-                        "Este nombre de proyecto ya existe para este propietario. Debes escoger otro.")
+                        "Este nombre de proyecto ya existe. Debes escoger otro.")
                 })
 
         return data

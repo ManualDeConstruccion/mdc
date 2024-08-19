@@ -3,12 +3,11 @@ from rest_framework.permissions import BasePermission
 from rest_framework.response import Response
 import logging
 
-from django.contrib.auth.models import User
-from applications.projects.api.serializers.project_serializer import ProjectSerializer, ProjectUpdateSerializer
-from applications.projects.models import Project
+from applications.architecture_projects.api.serializers.architecture_project_serializers import ArchitectureProjectSerializer, ArchitectureProjectUpdateSerializer
+from applications.architecture_projects.models import ArchitectureProject
 
+logger = logging.getLogger('architecture_project_app')
 
-logger = logging.getLogger('project_app')
 
 class IsOwnerOrReadOnly(BasePermission):
     """
@@ -33,8 +32,8 @@ class IsOwnerOrReadOnly(BasePermission):
         return obj.project_owner == request.user
 
 
-class ProjectViewSet(viewsets.ModelViewSet):
-    queryset = Project.objects.all()
+class ArchitectureProjectViewSet(viewsets.ModelViewSet):
+    queryset = ArchitectureProject.objects.all()
 
     def get_permissions(self):
         """
@@ -51,8 +50,8 @@ class ProjectViewSet(viewsets.ModelViewSet):
         Asigna diferentes serializadores para las acciones de creación y otras acciones.
         """
         if self.action in ['create', 'update', 'partial_update']:
-            return ProjectUpdateSerializer
-        return ProjectSerializer
+            return ArchitectureProjectUpdateSerializer
+        return ArchitectureProjectSerializer
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
@@ -60,6 +59,7 @@ class ProjectViewSet(viewsets.ModelViewSet):
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
     def update(self, request, *args, **kwargs):
         partial = kwargs.pop('partial', False)
@@ -69,5 +69,4 @@ class ProjectViewSet(viewsets.ModelViewSet):
         if serializer.is_valid():
             self.perform_update(serializer)
             return Response(serializer.data)
-        print("Errores del serializador:", serializer.errors)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

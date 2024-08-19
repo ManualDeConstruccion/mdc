@@ -8,6 +8,7 @@ from applications.architecture_projects.models import ArchitectureProject
 
 class ArchitectureBaseType(TimeStampedModel):
     architecture_project = models.ForeignKey(ArchitectureProject, on_delete=models.CASCADE, verbose_name=_('Proyecto de arquitectura'), related_name='architecture_type')
+    nombre_proyecto = models.CharField(max_length=255, verbose_name=_('Nombre del proyecto'), null=True, blank=True)
     comuna = models.ForeignKey(Comuna, on_delete=models.SET_NULL, null=True, blank=True, verbose_name=_('Comuna'), related_name='architecture_type')
     numero_solicitud = models.IntegerField(verbose_name=_('Número de solicitud'), null=True, blank=True)
     fecha_ingreso = models.DateField(verbose_name=_('Fecha de ingreso'), null=True, blank=True)
