@@ -55,6 +55,7 @@ class ArchitectureProjectViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
+        print("Datos recibidos para crear subproyecto Arquitectura:", request.data)
         if serializer.is_valid():
             self.perform_create(serializer)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -65,7 +66,7 @@ class ArchitectureProjectViewSet(viewsets.ModelViewSet):
         partial = kwargs.pop('partial', False)
         instance = self.get_object()
         serializer = self.get_serializer(instance, data=request.data, partial=partial)
-        print("Datos recibidos para actualizar:", request.data)
+        print("Datos recibidos para actualizar subproyecto Arquitectura:", request.data)
         if serializer.is_valid():
             self.perform_update(serializer)
             return Response(serializer.data)

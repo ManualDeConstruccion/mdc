@@ -40,4 +40,4 @@ class ArchitectureProject(TimeStampedModel):
         verbose_name_plural = _('Proyectos')
 
     def __str__(self):
-        return self.architecture_project_name
+        return self.architecture_project_name or "Unnamed Project"

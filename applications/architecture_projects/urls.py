@@ -9,5 +9,5 @@ router = DefaultRouter()
 router.register(r'architecture-projects', ArchitectureProjectViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path('api/', include(router.urls)),
 ]
