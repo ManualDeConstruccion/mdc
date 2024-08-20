@@ -8,7 +8,7 @@ env = environ.Env()
 # Especifica la ruta del archivo .env si no está en el directorio raíz
 env.read_env(env.str('ENV_PATH', '.env'))
 
-SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = 'django-insecure-local-secret-key-should-be-unique-and-secret'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
