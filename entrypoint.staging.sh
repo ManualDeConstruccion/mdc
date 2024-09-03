@@ -3,9 +3,15 @@
 # Make sure the script stops on the first error
 set -e
 
+echo "Starting Cloud SQL Auth proxy..."
+/usr/local/bin/cloud_sql_proxy -instances=manualdeconstruccion:us-central1:mdc-staging=tcp:5432 &
+
 # Start Nginx in the background
 echo "Starting Nginx..."
 service nginx start
+
+# Give the proxy some time to start
+sleep 5
 
 # Run Django migrations
 echo "Applying Django migrations..."

@@ -25,6 +25,10 @@ RUN pip install --no-cache-dir cython
 COPY requirements.txt /app/
 RUN pip3 install --no-cache-dir -r requirements.txt
 
+# Descarga el Cloud SQL Auth Proxy
+RUN wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O /usr/local/bin/cloud_sql_proxy \
+    && chmod +x /usr/local/bin/cloud_sql_proxy
+
 # Copiar el código de la aplicación al contenedor
 COPY . /app/
 
